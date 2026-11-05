@@ -8,15 +8,16 @@ import '../../../core/widgets/state_views.dart';
 import '../../../shared/models/profile.dart';
 import '../../../shared/providers/profile_provider.dart';
 import '../../auth/data/auth_repository.dart';
+import '../../../core/utils/open_link.dart';
 
 class AccountScreen extends ConsumerWidget {
   const AccountScreen({super.key});
 
   Future<void> _open(BuildContext context, Uri uri) async {
-    final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
+    final ok = await openLink(uri.toString());
     if (!ok && context.mounted) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Could not open the link.')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Could not open the link.')));
     }
   }
 
