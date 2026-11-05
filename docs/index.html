@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lekkerbook | Free booking app for South African businesses</title>
+    <meta name="description" content="Lekkerbook is a free booking app. Providers list services and take bookings; customers book in a few taps. Join the Android testing group.">
+    <style>
+        :root {
+          --bg: #F2F7F7; --card: #FFFFFF; --text: #0B2F33; --muted: #4F6F72;
+          --teal: #0F5C63; --sun: #FFC247; --line: #CFE0E1;
+          --error: #B3261E; --ok: #1B6B3A; --btn-text: #FFFFFF; --btn-bg: #0F5C63;
+        }
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --bg: #0A2326; --card: #10353A; --text: #EAF4F4; --muted: #A9C4C6;
+            --teal: #FFC247; --line: #25565C; --error: #FFB4AB; --ok: #8BD3A6;
+            --btn-text: #083D42; --btn-bg: #FFC247;
+          }
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+               background: var(--bg); color: var(--text); line-height: 1.55; }
+        .wrap { max-width: 720px; margin: 0 auto; padding: 1.5rem; }
+        header { display: flex; align-items: center; gap: .75rem; padding-top: .5rem; }
+        header svg { width: 44px; height: 44px; flex: none; }
+        header span { font-size: 1.35rem; font-weight: 700; letter-spacing: -.01em; }
+        h1 { font-size: clamp(1.9rem, 6vw, 2.8rem); line-height: 1.12; margin: 2rem 0 .75rem; letter-spacing: -.02em; }
+        h2 { font-size: 1.2rem; margin: 0 0 .5rem; }
+        p { margin: 0 0 1rem; color: var(--muted); }
+        .lead { font-size: 1.1rem; }
+        .cards { display: grid; gap: 1rem; margin: 2rem 0; }
+        @media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
+        .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1.25rem; }
+        .card p:last-child { margin-bottom: 0; }
+        form { margin-top: 1rem; }
+        label { display: block; font-weight: 600; margin: 1rem 0 .35rem; }
+        .hint { font-weight: 400; color: var(--muted); font-size: .9rem; }
+        input[type=text], input[type=email] {
+          width: 100%; padding: .75rem .85rem; font: inherit; color: var(--text);
+          background: transparent; border: 1px solid var(--line); border-radius: 10px;
+        }
+        .check { display: flex; gap: .6rem; align-items: flex-start; margin-top: 1rem; font-weight: 400; }
+        .check input { margin-top: .3rem; width: 1.1rem; height: 1.1rem; flex: none; }
+        input:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+        button, .btn {
+          display: inline-block; width: 100%; margin-top: 1.25rem; padding: .85rem 1rem; font: inherit;
+          font-weight: 700; text-align: center; text-decoration: none; color: var(--btn-text);
+          background: var(--btn-bg); border: 0; border-radius: 10px; cursor: pointer;
+        }
+        button:disabled { opacity: .6; cursor: default; }
+        .msg { margin-top: 1rem; font-size: .95rem; min-height: 1.25rem; }
+        .msg.error { color: var(--error); } .msg.ok { color: var(--ok); }
+        .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+        [hidden] { display: none !important; }
+        a { color: var(--teal); }
+        ol { color: var(--muted); padding-left: 1.2rem; margin: 0 0 1rem; }
+        ol li { margin-bottom: .35rem; }
+        footer { margin: 2.5rem 0 1rem; font-size: .9rem; color: var(--muted); }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <svg viewBox="0 0 1024 1024" role="img" aria-label="Lekkerbook logo">
+            <rect width="1024" height="1024" rx="224" fill="#0F5C63"/>
+            <g transform="translate(512 512) scale(1.15) translate(-512 -512)">
+                <rect x="232" y="262" width="560" height="520" rx="84" fill="#FFFFFF"/>
+                <path d="M232 412 V346 A84 84 0 0 1 316 262 H708 A84 84 0 0 1 792 346 V412 Z" fill="#FFC247"/>
+                <rect x="340" y="212" width="64" height="130" rx="32" fill="#FFFFFF"/>
+                <rect x="620" y="212" width="64" height="130" rx="32" fill="#FFFFFF"/>
+                <g stroke="#0F5C63" stroke-width="44" stroke-linecap="round" fill="none">
+                    <line x1="412" y1="500" x2="412" y2="552"/><line x1="612" y1="500" x2="612" y2="552"/>
+                    <path d="M392 628 Q512 728 632 628"/>
+                </g>
+            </g>
+        </svg>
+        <span>Lekkerbook</span>
+    </header>
+
+    <main>
+        <h1>Bookings, made lekker.</h1>
+        <p class="lead">Lekkerbook is a free Android app for small service businesses and the people who book them. Providers list their services and see their day; customers pick a time and book in a few taps.</p>
+
+        <div class="cards">
+            <div class="card">
+                <h2>For providers</h2>
+                <p>Add your business and services, set who works when, confirm or complete bookings, and see your bookings and revenue on a simple dashboard.</p>
+            </div>
+            <div class="card">
+                <h2>For customers</h2>
+                <p>Browse businesses, see real free time slots, book, and keep track of your appointments in one place.</p>
+            </div>
+        </div>
+
+        <section class="card" id="join" aria-labelledby="join-title">
+            <h2 id="join-title">Help us test it</h2>
+            <p>Lekkerbook is in closed testing on Google Play. Add your details, and we will add you to the testing group. It is free, and your feedback shapes the app.</p>
+
+            <form id="signup" novalidate>
+                <label for="name">Name <span class="hint">(optional)</span></label>
+                <input id="name" type="text" autocomplete="name" maxlength="100">
+
+                <label for="email">Google account email <span class="hint">(the one you use on the Play Store)</span></label>
+                <input id="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required>
+
+                <!-- spam trap: real people never see or fill this -->
+                <div class="hp" aria-hidden="true">
+                    <label for="website">Website</label>
+                    <input id="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+
+                <label class="check" for="consent">
+                    <input id="consent" type="checkbox" required>
+                    <span>I agree that Lekkerbook may use my email to add me to the Google Play testing group and to contact me about testing. See the <a href="privacy-policy.html">privacy policy</a>.</span>
+                </label>
+
+                <button type="submit" id="btn">Join the testers</button>
+                <p class="msg" id="msg" role="status" aria-live="polite"></p>
+            </form>
+
+            <div id="done" hidden>
+                <h2>You are on the list. Thank you!</h2>
+                <p>Next steps:</p>
+                <ol>
+                    <li>We will add your email to the Play testing group (usually within a day).</li>
+                    <li>Open the testing link below with that same Google account and tap <strong>Become a tester</strong>.</li>
+                    <li>Install Lekkerbook from the Play Store and give it a go. Please keep it installed for 14 days.</li>
+                </ol>
+                <a class="btn" id="optin" href="#" rel="noopener" hidden>Open the testing link</a>
+                <p id="optin-pending" hidden>We will email you the testing link as soon as you are added.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Lekkerbook is made by Avenlume (Pty) Ltd, South Africa. ·
+        <a href="privacy-policy.html">Privacy policy</a> ·
+        <a href="delete-account.html">Delete your account</a> ·
+        <a href="mailto:support@lekkerbook.co.za">support@lekkerbook.co.za</a>
+    </footer>
+</div>
+
+<script>
+    // ---- Fill these in. The publishable key is designed to be public. ----
+    const SUPABASE_URL = 'https://tfmfxsmndhjmzredxdss.supabase.co';             // https://xxxx.supabase.co
+    const SUPABASE_KEY = 'sb_publishable_Da7ea5dwa9CksUj_oUPi0Q_4oIfJIk7'; // starts with sb_publishable_
+    // Google Play opt-in link for the closed test (Play Console -> Closed testing -> Testers -> "Copy link").
+    // Leave empty until you have it.
+    const OPTIN_URL = '';
+    // -----------------------------------------------------------------------
+
+    const form = document.getElementById('signup');
+    const msg = document.getElementById('msg');
+    const btn = document.getElementById('btn');
+    const say = (t, k) => { msg.textContent = t; msg.className = 'msg' + (k ? ' ' + k : ''); };
+
+    function finish() {
+      form.hidden = true;
+      document.getElementById('done').hidden = false;
+      if (OPTIN_URL) {
+        const a = document.getElementById('optin');
+        a.href = OPTIN_URL; a.hidden = false;
+      } else {
+        document.getElementById('optin-pending').hidden = false;
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (document.getElementById('website').value) { finish(); return; } // bot: pretend success
+
+      const email = document.getElementById('email').value.trim().toLowerCase();
+      const name = document.getElementById('name').value.trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { say('Enter a valid email address.', 'error'); return; }
+      if (!document.getElementById('consent').checked) { say('Please tick the box to continue.', 'error'); return; }
+
+      btn.disabled = true; say('Sending…');
+      try {
+        const res = await fetch(SUPABASE_URL + '/rest/v1/tester_signups', {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal',
+          },
+          body: JSON.stringify({ email, full_name: name || null, source: 'landing' }),
+        });
+        if (res.ok || res.status === 409) { finish(); return; } // 409 = already signed up: same friendly result
+        say('Something went wrong. Please try again, or email support@lekkerbook.co.za.', 'error');
+      } catch (err) {
+        say('No connection. Please try again.', 'error');
+      }
+      btn.disabled = false;
+    });
+</script>
+</body>
+</html>
